@@ -10,3 +10,6 @@ main:
 	la	$a0,	hello
 	syscall
 
+	# exit
+	li	$v0,	10
+	syscall
