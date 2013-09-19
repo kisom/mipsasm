@@ -1,0 +1,25 @@
+EXERCISES
+
+2.1 Using Appendix A, translate each of the following pseudocode expressions into MIPS assembly language.
+    (a) t3 = t4 + t5 - t6
+        add $t3, $t4, $t5
+	sub $t3, $t3, $t6
+    (b) s3 = t2 / (s1 - 54321)
+        subi $s3, $s1, 54321
+        div  $s3, $t2, $s3
+    (c) sp = sp - 16
+        subi $sp, $sp, 16
+    (d) cout << t3;
+        li $v0, 4
+        sw $a0, $t3
+        syscall
+    (e) cin >> t0;
+	# read int implied, t0 is a 32-byte register
+        li $v0, 5
+	syscall
+	move $t0, $v0
+    (f) a0 = &array;
+	.data
+	la $a0, array
+    (g) t8 = Mem(a0);
+	lw $t8, $a0
