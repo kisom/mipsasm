@@ -25,17 +25,25 @@ expressions into MIPS assembly language.
     (g) t8 = Mem(a0);
 	lw $t8, $a0
     (h) Mem(a0 + 16) = 32768;
-        sw 
+        sw $t0, $a0
+        addi $t0, $a0, 16
+	sw $t0, 32768
     (i) cout << "Hello world.";
-
+        .data
+        hello: .asciiz "Hello world."
+        .text
+        li $v0, 4
+        la $a0, hello
+        syscall
+        # see also hello*.S
     (j) if (t0 < 0) then t7 = 0 - t0 else t7 = t0;
-
+        
     (k) while (t0 != 0) { s1 = s1 + t0; t2 = t2 + 4; t0 = Mem(t2)};
 
     (l) for (t1 = 99; t1 > 0; t1 = t1 - 1) v0 = v0 + t1;
 
     (m) t0 = 2147483647 - 2147483648
-
+        subi $t0, 214783647, 2147483648
     (n) s0 = -1 * s0;
 
     (o) s1 = s1 * a0;
