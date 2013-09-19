@@ -1,3 +1,4 @@
+# 32-bit version of hello world
 	.data
 	.align 4
 hello:	.asciiz	"Hello, world.\n"

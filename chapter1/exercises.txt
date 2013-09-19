@@ -4,36 +4,55 @@ EXERCISES
     A register stores the result of a computation, whereas the ALU
     carries out computation.
 
-
 1.2 Explain the difference between assembly language and machine language.
-    Assembly language uses mnemonics and is transformed into machine language with an assembler.
-
+    Assembly language uses mnemonics and is transformed into machine
+    language with an assembler.
 
 1.3 Explain the difference between cache memory and the register file.
-    Cache memory stores recently accessed data, while the register file stores results of computations.
+    Cache memory stores recently accessed data, while the register
+    file stores results of computations.
 
 1.4 Explain the difference between the IR and the PC.
-    The IR stores the most recently accessed instruction, while the PC points to the location in memory where the next instruction to be loaded into the IR.
+    The IR stores the most recently accessed instruction, while the
+    PC points to the location in memory where the next instruction
+    to be loaded into the IR.
 
 1.5 Explain the difference between a bus and a control line.
-    A bus transports data between various components of the CPU, while a control line selects an input bus in a multiplexor.
+    A bus transports data between various components of the CPU,
+    while a control line selects an input bus in a multiplexor.
 
-1.6 Identify a kitchen appliance that contains a control unit that issues control signals.
-    A microwave has a control unit that issues control to select various temperatures and cooking times.
+1.6 Identify a kitchen appliance that contains a control unit that
+issues control signals.
+    A microwave has a control unit that issues control to select
+    various temperatures and cooking times.
 
 1.7 What is an algorithm?
     An algorithm is a list of instructions for accomplishing a task.
 
-1.8 Provide a step-by-step description of the sequence of operations that must take place within a MIPS processor to fetch and execute the "load word" instruction.
-    1. The processor loads the load word immediate instruction from the PC.
-    2. During the operand fetch phase, the target register (Rs) is loaded, and the register containing the
-       address to load from (Rt), are decoded during this stage. The offset is loaded from the instruction.
-    3. During the execute phase, the 32-bit address is routed to the ALU.
-    4. In the write back phase, the word at the 32-bit address is stored in the target register.
+1.8 Provide a step-by-step description of the sequence of operations
+that must take place within a MIPS processor to fetch and execute
+the "load word" instruction.
+    1. The processor loads the load word immediate instruction from
+    the PC.
+    2. During the operand fetch phase, the target register (Rs) is
+    loaded, and the register containing the address to load from
+    (Rt), are decoded during this stage. The offset is loaded from
+    the instruction.
+    3. During the execute phase, the 32-bit address is routed to
+    the ALU.
+    4. In the write back phase, the word at the 32-bit address is
+    stored in the target register.
 
-1.9 Provide a step-by-step description of the sequence of operations that must take place within a MIPS processor to fetch and execute the "store word" instruction.
-    1. The processor loads the store word immediate instruction from the PC.
-    2. During the operand fetch phase, the target register (Rs) is loaded, and the register containing the
-       address to store at (Rt), are decoded during this stage. The offset is loaded from the instruction.
-    3. During the execute phase, the 32-bit address is routed to the ALU.
-    4. In the write back phase, the word in the source register is stored at the address in the target register.
+1.9 Provide a step-by-step description of the sequence of operations
+that must take place within a MIPS processor to fetch and execute
+the "store word" instruction.
+    1. The processor loads the store word immediate instruction
+    from the PC.
+    2. During the operand fetch phase, the target register (Rs) is
+    loaded, and the register containing the address to store at
+    (Rt), are decoded during this stage. The offset is loaded from
+    the instruction.
+    3. During the execute phase, the 32-bit address is routed to
+    the ALU.
+    4. In the write back phase, the word in the source register is
+    stored at the address in the target register.
