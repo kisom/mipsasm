@@ -1,3 +1,7 @@
+MIPS32 REFERENCE
+This is suitable for playing with Spim, and to a lesser extent,
+OpenBSD/mips64.
+
 INTEGER INSTRUCTION SET
 --------------------------------------------------------------------
 NAME				Syntax			  Space/Time
@@ -88,7 +92,7 @@ Divide Unsigned			divu	Rd, Rs, Rt		4/41
 Load Address			la	Rd, Label		2/2
 Load Immediate			li	Rd, Imm			2/2
 Move				move	Rd, Rs			1/1
-Multiply			mul	Rd, Rs			2/33
+Multiply			mul	Rd, Rs, Rt		2/33
 Multiply (with overflow		mulo	Rd, Rs, Rt		7/37
 	exception)
 Multiply Unsigned (with		mulou	Rd, Rs, Rt		5/35
@@ -121,7 +125,7 @@ Unaligned Store Halfword	ush	Rd, n(Rs)		3/3
 Unaligned Store Word		usw	Rd, n(Rs)		2/2
 
 
-INTEGER INSTRUCTION SET
+FLOATING-POINT INSTRUCTION SET
 --------------------------------------------------
 NAME				Syntax		
 --------------------------------------------------
@@ -172,7 +176,7 @@ Subtract double			sub.d	Fd, Fs, Ft
 Subtract single			sub.s	Fd, Fs, Ft
 
 
-SYSTEM I/O SERVICES
+SYSTEM I/O SERVICES (SPIM)
 --------------------------------------------------------------------
 Service		$v0		Arguments		Result(s)
 --------------------------------------------------------------------
