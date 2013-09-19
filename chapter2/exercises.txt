@@ -23,3 +23,28 @@ EXERCISES
 	la $a0, array
     (g) t8 = Mem(a0);
 	lw $t8, $a0
+    (h) Mem(a0 + 16) = 32768;
+        sw 
+    (i) cout << "Hello world.";
+
+    (j) if (t0 < 0) then t7 = 0 - t0 else t7 = t0;
+
+    (k) while (t0 != 0) { s1 = s1 + t0; t2 = t2 + 4; t0 = Mem(t2)};
+
+    (l) for (t1 = 99; t1 > 0; t1 = t1 - 1) v0 = v0 + t1;
+
+    (m) t0 = 2147483647 - 2147483648
+
+    (n) s0 = -1 * s0;
+
+    (o) s1 = s1 * a0;
+
+    (p) s2 = srt(a0^2 + 56) / a3;
+
+    (q) s3 = s1 - s2 / s3
+
+    (r) s4 = s4 * 8;
+
+    (s) s5 = 7 * a5;
+        li $t0, 7
+        mul $s5, $t0, $a5 
