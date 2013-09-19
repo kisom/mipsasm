@@ -1,6 +1,7 @@
 EXERCISES
 
-2.1 Using Appendix A, translate each of the following pseudocode expressions into MIPS assembly language.
+2.1 Using Appendix A, translate each of the following pseudocode
+expressions into MIPS assembly language.
     (a) t3 = t4 + t5 - t6
         add $t3, $t4, $t5
 	sub $t3, $t3, $t6
