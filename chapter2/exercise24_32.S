@@ -40,7 +40,7 @@ main:
 	la	$a0,	prompt3
 	syscall
 	li	$v0,	1
-	li	$a0,	$t0
+	move	$a0,	$t0
 	syscall	
 
 	li	$v0,	10
