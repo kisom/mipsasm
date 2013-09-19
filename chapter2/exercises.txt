@@ -20,7 +20,6 @@ expressions into MIPS assembly language.
 	syscall
 	move $t0, $v0
     (f) a0 = &array;
-	.data
 	la $a0, array
     (g) t8 = Mem(a0);
 	lw $t8, $a0
@@ -37,23 +36,87 @@ expressions into MIPS assembly language.
         syscall
         # see also hello*.S
     (j) if (t0 < 0) then t7 = 0 - t0 else t7 = t0;
-        
+        bgez $t0, zerosub
+        move $7, $t0
+        j done
+	zerosub: sub $t7, 0, $t0
+        done: 
     (k) while (t0 != 0) { s1 = s1 + t0; t2 = t2 + 4; t0 = Mem(t2)};
-
+        whiletop:
+            li $t8, 0
+            bne $t0, $t8, whiledone
+            add $s1, $s1, $t0
+            addi $t2, $t2, 4
+            lw $0, 0($t2)
+            j whiletop
+        whiledone:
     (l) for (t1 = 99; t1 > 0; t1 = t1 - 1) v0 = v0 + t1;
-
+        li $t1, 99
+        li $t2, 1
+        fortop:
+            bgtz $t1, fordone
+            sub $t1, $t1, $t2
+            add $v0, $v0, $t1
+            j fortop
+         fordone:
     (m) t0 = 2147483647 - 2147483648
         subi $t0, 214783647, 2147483648
     (n) s0 = -1 * s0;
-
+        li $t0, -1
+        mult $t0, $s0
+        mflo $s0
     (o) s1 = s1 * a0;
-
+        mult $s1, $s1, $a0
     (p) s2 = srt(a0^2 + 56) / a3;
-
+        mult $a0, $a0, $a0
+        addi $a0, $a0, 56
+	jal srt
+	div $v0, $a3
+	mfhi $s2
     (q) s3 = s1 - s2 / s3
-
+        div $s2, $s3
+        mfhi $t0
+        sub $s3, $t0, $s3
     (r) s4 = s4 * 8;
-
+        li $t0, 8
+        mult $t0, $s4
+        mflo $s4 
     (s) s5 = 7 * a5;
         li $t0, 7
-        mul $s5, $t0, $a5 
+        mul $s5, $t0, $a5
+2.2 Analyze the assembly language code that you developed for each of the above pseudocode instructions and calculate the number of clock cycles requried to fetch and execute the code corresponding to each expression.
+    (a) 2 clock cycles
+    (b) 42 clock cycles
+    (c) 1 clock cycle
+    (d) 3 clock cycles
+    (e) 3 clock cycles
+    (f) 1 clock cycle
+    (g) 1 clock cycle
+    (h) 3 clock cycles
+    (i) 3 clock cycles
+    (j) if t0 < 0, 3 clock cycles; if t0 >= 0, 2 clock cycles
+    (k) 6 clock cycles per iteration
+    (l) 2 clock cycles + (4 clock cycles * 99 iterations) = 398 clock cycles
+    (m) 1 clock cycle
+    (n) 34 clock cycles 
+    (o) 33 clock cycles
+    (q) 40 clock cycles
+    (r) 34 clock cycles
+    (s) 38 clock cycles
+2.3 Show how the following expression can be evaluated in MIPS assembly language, without modifying the contents of the "s" registers.
+    $t0 = ($s1-$s0/$s2)*$s4
+
+    div $t0, $s0, $s2
+    sub $t0, $s1, $t0
+    mul $t0, $t0, $s4
+
+2.4 Show how the following pseudocode expression can be efficiently evaluated in MIPS assembly language.
+    $t0=$s0/8-2*$s1+$s2
+
+    # 45 clock cycles
+
+    li $t1, 8
+    div $t0, $s0, $t1
+    add $t2, $s1, $s1
+    sub $t0, $t0, $t2
+    add $t0, $t0, $s2
