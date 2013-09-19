@@ -1,0 +1,282 @@
+INTEGER INSTRUCTION SET
+--------------------------------------------------------------------
+NAME				Syntax			  Space/Time
+--------------------------------------------------------------------
+Add				add	Rd, Rs, Rt		1/1
+Add Immediate			addi	Rt, Rs, Imm		1/1
+Add Immediate Unsigned		addiu	Rt, Rs, Imm		1/1
+Add Unsigned			addu	Rd, Rs, Rt		1/1
+And				and	Rd, Rs, Rt		1/1
+And Immediate			andi	Rt, Rs, Imm		1/1
+Branch If Equal			beq	Rs, Rt, Label		1/1
+Branch If >= 0			bgez	Rs, Label		1/1
+Branch If >= 0 and Link		bgezal	Rs, Label		1/1
+Branch If > 0			bgtz	Rs, Label		1/1
+Branch If <= 0			blez	Rs, Label		1/1
+Branch If < 0 and Link		bltzal	Rs, Label		1/1
+Branch If < 0			bltz	Rs, Label		1/1
+Branch If Not Equal		bne	Rs, Rt, Label		1/1
+Divide				div	Rs, Rt			1/38
+Divide Unsigned			divu	Rs, Rt			1/38
+Jump				j	Label			1/1
+Jump and Link			jal	Label			1/1
+Jump and Link Register		jalr	Rd, Rs			1/1
+Jump Register			jr	Rs			1/1
+Load Byte			lb	Rt, offset(Rs)		1/1
+Load Byte Unsigned		lbu	Rt, offset(Rs)		1/1
+Load Halfword			lh	Rt, offset(Rs)		1/1
+Load Halfword Unsigned		lhu	Rt, offset(Rs)		1/1
+Load Upper Immediate		lui	Rt, Imm			1/1
+Load Word			lw	Rt, offset(Rs)		1/1
+Load Word Left			lwl	Rt, offset(Rs)		1/1
+Load Word Right			lwr	Rt, offset(Rs)		1/1
+Move From Coprocessor 0		mfc0	Rd, Cs			1/1
+Move From High			mfhi	Rd			1/1
+Move From Low			mflo	Rd			1/1
+Move To Coprocessor 0		mtc0	Rt, Cd			1/1
+Move To High			mthi	Rs			1/1
+Move To Low			mtlo	Rs			1/1
+Multiply			mult	Rs, Rt			1/32
+Multiply Unsigned		multu	Rs, Rt			1/32
+NOR				nor	Rd, Rs, Rt		1/1
+OR				or	Rd, Rs, Rt		1/1
+OR Immediate			ori	Rt, Rs, Imm		1/1
+Return From Exception		rfe				1/1
+Store Byte			sb	Rt, offset(Rs)		1/1
+Store Halfword			sh	Rt, offset(Rs)		1/1
+Shift Left Logical		sll	Rd, Rt, sa		1/1
+Shift Left Logical Variable	sllv	Rd, Rt, Rs		1/1
+Set on Less Than		slt	Rd, Rt, Rs		1/1
+Set on Less Than Immediate	slti	Rt, Rs, Imm		1/1
+Set on Less Than Immediate	sltiu	Rt, Rs, Imm		1/1
+	Unsigned
+Set on Less Than Unsigned	sltu	Rd, Rt, Rs		1/1
+Shift Right Arithmetic		sra	Rd, Rt, sa		1/1
+Shift Right Arithmetic Variable srav	Rd, Rt, Rs		1/1
+Shift Right Logical		srl	Rd, Rt, sa		1/1
+Shift Right Logical Variable	srlv	Rd, Rt, Rs		1/1
+Subtract			sub	Rd, Rs, Rt		1/1
+Subtract Unsigned		subu	Rd, Rs, Rt		1/1
+Store Word			sw	Rt, offset(Rs)		1/1
+Store Word Left			swl	Rt, offset(Rs)		1/1
+Store Word Right		swr	Rt, offset(Rs)		1/1
+Syscall				syscall				1/1
+XOR				xor	Rd, Rs, Rt		1/1
+XOR Immediate			xori	Rt, Rs, Imm		1/1
+
+
+MACRO INSTRUCTION SET
+--------------------------------------------------------------------
+NAME				Syntax			  Space/Time
+--------------------------------------------------------------------
+Absolute Value			abs	Rd, Rs			3/3
+Branch If Equal to Zero		beqz	Rs, Label		1/1
+Branch If Greater Than or Equal	bge	Rs, Rt, Label		2/2
+Branch If Greater Than or Equal bgeu	Rs, Rt, Label		2/2
+	Unsigned
+Branch If Greater Than		bgt	Rs, Rt, Label		2/2
+Branch If Greater Than Unsigned bgtu	Rs, Rt, Label		2/2
+Branch If Less Than or Equal	ble	Rs, Rt, Label		2/2
+Branch If Less Than or Equal	bleu	Rs, Rt, Label		2/2
+	Unsigned
+Branch If Less Than		blt	Rs, Rt, Label		2/2
+Branch If Less Than Unsigned	bltu	Rs, Rt, Label		2/2
+Branch If Not Equal to Zero	bnez	Rs, Label		2/2
+Branch Unconditional		b	Label			1/1
+Divide				div	Rd, Rs, Rt		4/41
+Divide Unsigned			divu	Rd, Rs, Rt		4/41
+Load Address			la	Rd, Label		2/2
+Load Immediate			li	Rd, Imm			2/2
+Move				move	Rd, Rs			1/1
+Multiply			mul	Rd, Rs			2/33
+Multiply (with overflow		mulo	Rd, Rs, Rt		7/37
+	exception)
+Multiply Unsigned (with		mulou	Rd, Rs, Rt		5/35
+	overflow exception)
+Negate				neg	Rd, Rs			1/1
+Negate Unsigned			negu	Rd, Rs			1/1
+Nop				nop				1/1
+Not				not	Rd, Rs			1/1
+Remainder Unsigned		remu	Rd, Rs, Rt		4/40
+Rotate Left Variable		rol	Rd, Rs, Rt		4/4
+Rotate Right Variable		ror	Rd, Rs, Rt		4/4
+Remainder			rem	Rd, Rs, Rt		4/40
+Rotate Left Constant		rol	Rd, Rs, sa		3/3
+Rotate Right Constant		ror	Rd, Rs, sa		3/3
+Set If Equal			seq	Rd, Rs, Rt		4/4
+Set If Greater Than or Equal	sge	Rd, Rs, Rt		4/4
+Set If Greater Than or Equal	sgeu	Rd, Rs, Rt		4/4
+	Unsigned
+Set If Greater Than		sgt	Rd, Rs, Rt		1/1
+Set If Greater Than Unsigned	sgtu	Rd, Rs, Rt		1/1
+Set If Less Than or Equal	sle	Rd, Rs, Rt		4/4
+Set If Less Than or Equal	sleu	Rd, Rs, Rt		4/4
+	Unsigned
+Set If Not Equal		sne	Rd, Rs, Rt		4/4
+Unaligned Load Halfword		ulh	Rd, n(Rs)		4/4
+Unaligned Load Halfword		ulhu	Rd, n(Rs)		4/4
+	Unsigned
+Unaligned Load Word		ulw	Rd, n(Rs)		2/2
+Unaligned Store Halfword	ush	Rd, n(Rs)		3/3
+Unaligned Store Word		usw	Rd, n(Rs)		2/2
+
+
+INTEGER INSTRUCTION SET
+--------------------------------------------------
+NAME				Syntax		
+--------------------------------------------------
+Absolute value double		abs.d	Fd, Fs
+Absolute value single		abs.s	Fd, Fs
+Add double			add.d	Fd, Fs, Ft
+Add single			add.s	Fd, Fs, Ft
+Branch if floating-point	bc1t	Label
+	status flag is true
+Branch if floating-point	bc1f	Label
+	status flag is false
+Compare and set flag if equal	c.eq.d	Fs, Ft
+	double
+Compare and set flag if equal	c.eq.s	Fs, Ft
+	single
+Compare and set flag if less	c.le.d	Fs, Ft
+	than or equal double
+Compare and set flag if less	c.lt.d	Fs, Ft
+	than double
+Compare and set flag if less	c.lt.s	Fs, Ft
+	than single
+Convert single to double	cvt.d.s	Fd, Fs
+Convert integer to double	cvt.d.w	Fd, Rs
+Convert double to single	cvt.s.d	Fd, Fs
+Convert integer to single	cvt.s.w	Fd, Rs
+Convert double to integer	cvt.w.d	Rd, Fs
+Convert single to integer	cvt.w.s	Rd, Fs
+Divide double			div.d	Fd, Fs, Ft
+Divide single			div.s	Fd, Fs, Ft
+Load double (macro instruction) l.d	Fd, address
+Load single (macro instruction) l.s	Fd, address
+Load word into coprocessor 1	lwc1	Fd, offset(Rs)
+Move double			mov.d	Fd, Fs
+Move single			mov.s	Rd, Fs
+Move from coprocessor 1		mdc1	Rd, Fs
+	(Macro)
+Move double from coprocessor	mdc1.d	Rd, Fs
+	1 (Macro)
+Move to coprocessor 1		mtc1	Fd, Rs
+Multiply double			mul.d	Fd, Fs, Ft
+Multiply single			mul.s	Fd, Fs, Ft
+Negate double			neg.d	Fd, Fs
+Negate single			neg.s	Fd, Fs
+Store double (macro)		s.d	Ft, address
+Store single (macro)		s.d	Ft, address
+Store word from coprocessor 1	swc1	Fd, offset(Rs)
+Subtract double			sub.d	Fd, Fs, Ft
+Subtract single			sub.s	Fd, Fs, Ft
+
+
+SYSTEM I/O SERVICES
+--------------------------------------------------------------------
+Service		$v0		Arguments		Result(s)
+--------------------------------------------------------------------
+Print Integer	1		$a0 = number to be
+				printed
+Print Float	2		$f12 = number to be
+				printed
+Print Double	3		$f12 = number to be
+				printed
+Print String	4		$a0 = address of
+				string in memory
+Read Integer	5					Number returned
+							in $v0
+Read Float	6					Number returned
+							in $f0
+Read Double	7					Number returned
+							in $f0
+Read String	8		$a0 = address of input
+				buffer in memory
+				$a1 = length of buffer
+				(n)
+Sbrk		9		$a0 = amount		address in $v0
+Exit		10
+
+
+ASSEMBLER DIRECTIVES
+--------------------
+.align n	Align the next datum on 2^n byte boundary
+.ascii string	Store string in memory (not null-terminated). Strings
+		are enclosed in double quotes.
+.asciiz string	Store string in memory (null-terminated).
+.byte b1,...,bn Store the n 8-bit values in memory.
+.data <addr>	Subsequent items are stored in the data segment.
+.double d1,...,dn
+.extern Sym size
+		Datum stored at Sym is size bytes large and is a global
+		label. Enables assembler to store datum in portion of
+		data segment efficiently accessed with $gp.
+.float f1,..,fn
+.globl Symb	Symb is global and can be referenced from other files.
+.half h1,...,hn
+.kdata <addr>	Subsequent items are stored in the kernel data segment.
+.ktext <addr>	Subsequent items are stored in the kernel text segment.
+.space n	Allocate n bytes in the current segment.
+.text <addr>	Subsequent items are stored in the text segment.
+.word w1,...,wn
+.word w:n	Store the 32-bit value w in n successive memory words.
+
+
+REGISTER FILE
+====================================================================
+Register	Number		Usage
+====================================================================
+zero		0		constant 0
+--------------------------------------------------------------------
+at		1		reserved for assembler
+--------------------------------------------------------------------
+v0		2		Used for return values from function
+				calls
+v1		3
+--------------------------------------------------------------------
+a0		4		Used to parse arguments to functions
+a1		5
+a2		6
+a3		7
+--------------------------------------------------------------------
+t0		8		Temporary (caller-saved, doesn't
+t1		9		need to be saved by called functions)
+t2		10
+t3		11
+t4		12
+t5		13
+t6		14
+t7		15
+--------------------------------------------------------------------
+s0		16		Saved temporary (callee-saved,
+s1		17		function must save and restore)
+s2		18
+s3		19
+s4		20
+s5		21
+s6		22
+s7		23
+--------------------------------------------------------------------
+t8		24		Temporary (caller saved, doesn't
+t9		25		need to be saved by called function)
+--------------------------------------------------------------------
+k0		26		Reserved for OS kernel
+k1		27
+--------------------------------------------------------------------
+gp		28		Pointer to global area
+--------------------------------------------------------------------
+sp		29		Stack pointer
+--------------------------------------------------------------------
+fp		30		Frame pointer
+--------------------------------------------------------------------
+ra		31		Return address for function calls
+--------------------------------------------------------------------
+
+
+FLOATING-POINT REGISTER FILE
+----------------------------
+$f0-$f3		Function-returned values
+$f4-$f11	Temporary values
+$f12-$f15	Arguments passed into a function
+$f16-$f19	More temporary values
+$f20-$f31	Saved values
