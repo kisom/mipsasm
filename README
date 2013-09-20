@@ -3,6 +3,9 @@ MIPSASM
 Working through Britton's MIPS Assembly Language Programming (ISBN
 978-0131420441). Primary development machine is an SGI O2 running
 OpenBSD, which uses the 64-bit ABI. The default target is this. A
-32-bit target for spim is also available under the target 'spim'.
+32-bit target for spim is also available by setting TARGET=spim.
+
+The spim version is typically written first to verify the basic
+MIPS32 code taught by the book. The MIPS64 version is then written.
 
 Where applicable, this code is released under the ISC license.
