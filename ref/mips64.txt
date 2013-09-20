@@ -46,3 +46,21 @@ s8	30		Frame pointer.			Yes
 -----------------------------------------------------------------------
 ra	31		Return address.
 -----------------------------------------------------------------------
+
+SYSTEM CALLS (OPENBSD)
+========================================================================
+Name			Number		Args			Return
+========================================================================
+syscall			0		int
+exit			1		$a0: exit code
+fork			2					pid
+read			3		$a0: filedes		read size
+					$a1: address of buffer
+					$a2: length
+write			4		$a0: filedes
+					$a1: address of buffer
+					$a2: length
+open			5		$a0: filename		filedes
+					$a1: flags (fcntl.h)
+					$a2: permissions
+close			6		$a0: filedes		success
