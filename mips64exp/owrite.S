@@ -27,7 +27,7 @@ main:
 	li	$a1,	513		/* O_WRONLY|O_CREAT */
 	li	$a2,	420		/* 0420 -> 0644 (rw-r--r--) */
 	syscall
-	bltz	$v0,	exit		/* if open returns -1, exit */
+	bgtz	$v0,	exit		/* if open returns -1, exit */
 
 	/* store file descriptor in $t8 */
 	move	$t8,	$v0
@@ -38,7 +38,7 @@ main:
 	dla	$a1,	filedata
 	li	$a2,	6		/* strlen("hello\n") == 6 */
 	syscall
-	bltz	$v0,	exit
+	bltz	$v0,	exit		/* ssize_t */
 
 	/* close the file */
 	li	$v0,	6
