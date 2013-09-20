@@ -1,0 +1,10 @@
+REFERENCES
+
+mips32.txt: O32 / MIPS32 reference (targeted at spim). This is from the
+	book, and is designed to work with spim.
+mips64.txt: MIPS64 reference (targeted at OpenBSD). This should be used
+	for writing assembly on OpenBSD. Some of the information may be
+	useful on other platforms, but the syscall list almost certainly
+	will not.
+openbsd_mips64_syscall.h: the syscall header file from an OpenBSD
+	MIPS64 machine (an SGI O2).
