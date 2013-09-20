@@ -64,3 +64,18 @@ open			5		$a0: filename		filedes
 					$a1: flags (fcntl.h)
 					$a2: permissions
 close			6		$a0: filedes		success
+wait4			7		$a0: pid		pid
+					$a1: address of status
+						word
+					$a2: options (word)
+					$a3: address of rusage
+						struct
+__tfork			8		$a0: address of struct	pid
+						__tfork	
+					$a1: size of struct
+link			9		$a0: address of source	success
+						filename
+					$a1: address of target
+						filename
+unlink			10		$a0: address of target	success
+						filename
