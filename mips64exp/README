@@ -1,0 +1,6 @@
+MIPS64EXP
+
+In this folder are several test files wherein I attempt to figure
+out how to use the syscalls, at least for OpenBSD.mips64.
+
+owrite.S:	open ``tmp.out'' and write the string ``hello\n'',
