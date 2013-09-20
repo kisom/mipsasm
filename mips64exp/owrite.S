@@ -13,37 +13,40 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
+
 	.data
 filename:.asciiz	"tmp.out"
 filedata:.asciiz	"hello\n"
 
 	.text
 	.globl	main
-
 main:
 	# open "tmp.out".
 	li	$v0,	5
 	dla	$a0,	filename
-	li	$a1,	513		# O_WRONLY|O_CREAT
-	li	$a2,	420		# 0420 -> 0644 (rw-r--r--)
+	li	$a1,	513		/* O_WRONLY|O_CREAT */
+	li	$a2,	420		/* 0420 -> 0644 (rw-r--r--) */
 	syscall
+	bltz	$v0,	exit		/* if open returns -1, exit */
 
-	# store file descriptor in $t8
+	/* store file descriptor in $t8 */
 	move	$t8,	$v0
 
-	# write "hello\n" to tmp.out
+	/* write "hello\n" to tmp.out */
 	li	$v0,	4
 	move	$a0,	$t8
 	dla	$a1,	filedata
-	li	$a2,	6		# strlen("hello\n") == 6
+	li	$a2,	6		/* strlen("hello\n") == 6 */
 	syscall
+	bltz	$v0,	exit
 
-	# close the file
+	/* close the file */
 	li	$v0,	6
 	move	$a0,	$t8
 	syscall
 
-	# exit with the return value of close
+exit:
+	/* exit with the return value of close */
 	move	$a0,	$v0
 	li	$v0,	1
 	syscall
