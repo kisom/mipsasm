@@ -16,7 +16,6 @@
 
 	.data
 filename:.asciiz "tmp.out"
-	.align 1
 buffer:	.byte	10
 
 	.text
@@ -25,11 +24,12 @@ buffer:	.byte	10
 main:
 	/* open the file */
 	li	$v0,	5
-	la	$a0,	filename
+	dla	$a0,	filename
 	li	$a1,	0		/* O_RDONLY == 0 */
 	li	$a2,	0
 	syscall
-	bgtz	$v0,	exit
+	li	$t8,	3		/* on error, we get 2 */
+	bnez	$a3,	errexit
 
 	/* store file descriptor */
 	move	$t8,	$v0
@@ -37,16 +37,37 @@ main:
 	/* read the file */
 	li	$v0,	3
 	move	$a0,	$t8		/* file descriptor */
-	la	$a1,	buffer
+	dla	$a1,	buffer
 	li	$a2,	10		/* read up to 10 bytes */
 	syscall
-	bltz	$v0,	exit
+	bnez	$a3,	errexit
 
-	la	$t7,	buffer
-	add	$t7,	$t7,	$v0
-	addi	$t7,	$t7,	1
-	sb	$zero,	$t7
+	/* store a NULL byte at end of buffer */
+	dla	$t9,	buffer
+	add	$t9,	$t9,	$v0
+	addi	$t9,	$t9,	1
+	sb	$zero,	0($t9)
+	move	$t9,	$v0
+	addi	$t9,	$t9,	1
 
+	/* close file */
+	li	$v0,	6
+	move	$a0,	$t8
+	syscall
+
+	/* print file to screen */
+	li	$v0,	4
+	li	$a0,	1		/* filedes = stdin */
+	dla	$a1,	buffer
+	move	$a2,	$t9
+	syscall
+
+	beq	$v0,	$zero,	errexit
+	move	$v0,	$zero
+	j	exit
+
+errexit:
+	li	$v0,	1
 exit:
 	move	$a0,	$v0
 	li	$v0,	1
