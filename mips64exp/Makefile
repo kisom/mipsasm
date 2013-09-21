@@ -4,7 +4,8 @@ TARGETS = owrite	\
 	  oread		\
 	  linktmp	\
 	  unlinktmp	\
-	  daemon
+	  daemon	\
+	  util_test
 
 all: syscheck $(TARGETS)
 
@@ -28,10 +29,13 @@ unlinktmp: unlinktmp.S
 daemon: daemon.S
 	$(CC) $(ASMFLAGS) -o $@ $?
 
+util_test: util.S util_test.S
+	$(CC) $(ASMFLAGS) -o $@ util.S util_test.S
+
 test: syscheck $(TARGETS)
 	./test.sh
 
 clean:
-	rm -f $(TMP_FILES) $(TARGETS) *.core
+	rm -f $(TMP_FILES) $(TARGETS) *.core *.o
 
 .PHONY: all clean syscheck test

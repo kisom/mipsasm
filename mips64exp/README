@@ -11,3 +11,17 @@ unlinktmp.S:	unlink ``tmp.out'' and ``tmp_link.out''.
 daemon.S:	double-forks, sleeps 5 seconds, and exits. Prints
 		status to console when parent exits, the child
 		exits, and the daemon exits. Total run time is ~10s.
+
+util.S
+------
+util.S contains non-reentrant code useful in a lot of programs. The
+functions provided are:
+
+	strlen: takes the address of a NULL-terminated string in $a0
+		and returns the length in bytes in $v0.
+	sleep: the number of seconds to sleep should be stored in
+		$a0, and the number of nanoseconds to sleep in $1.
+		No mechanism is provided to determine if the sleep
+		was interrupted (i.e. via a signal).
+	print: print a string to standard output. The string should
+		NULL-terminated and its address loaded into $a0.
