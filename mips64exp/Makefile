@@ -1,5 +1,10 @@
-TMP_FILES = tmp.out
-TARGETS = owrite oread
+TMP_FILES = tmp.out tmp_link.out
+ASMFLAGS = -g -O0
+TARGETS = owrite	\
+	  oread		\
+	  linktmp	\
+	  unlinktmp	\
+	  daemon
 
 all: syscheck $(TARGETS)
 
@@ -9,15 +14,24 @@ syscheck:
 	@echo "ok"
 
 owrite: owrite.S
-	$(CC) -o $@ $?
+	$(CC) $(ASMFLAGS) -o $@ $?
 
 oread: oread.S
-	$(CC) -o $@ $?
+	$(CC) $(ASMFLAGS) -o $@ $?
 
-test: $(TARGETS)
+linktmp: linktmp.S
+	$(CC) $(ASMFLAGS) -o $@ $?
+
+unlinktmp: unlinktmp.S
+	$(CC) $(ASMFLAGS) -o $@ $?
+
+daemon: daemon.S
+	$(CC) $(ASMFLAGS) -o $@ $?
+
+test: syscheck $(TARGETS)
 	./test.sh
 
 clean:
-	rm -f $(TMP_FILES) $(TARGETS)
+	rm -f $(TMP_FILES) $(TARGETS) *.core
 
 .PHONY: all clean syscheck test
