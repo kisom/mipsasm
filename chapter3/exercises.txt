@@ -1,0 +1,177 @@
+EXERCISES
+
+3.1 Convert the decimal number 35 to an 8-bit binary number.
+	  0	 0	 1	 0	 0	 0	 1	 1
+	128	64	32	16	 8	 4	 2	 1
+
+	35 = 0b00100011
+
+3.2 Convert the decimal number 32 to an 8-bit binary number.
+	32 - 0b00100000
+
+3.3 Using the double-and-add method, convert 00010101 to a decimal
+number.
+	1
+	0 -> 1 * 2 + 0 = 2
+	1 -> 2 * 2 + 1 = 5
+	0 -> 5 * 2 + 0 = 10
+	1 -> 10 * 2 + 1 = 21
+
+3.4 Using the double-and-add method, convert 00011001 to a hexadecimal
+number.
+	1
+	1 -> 1 * 2 + 1 = 3
+	0 -> 3 * 2 + 0 = 6
+	0 -> 6 * 2 + 0 = 12
+	1 -> 12 * 2 + 1 = 25
+
+3.5 Explain why the LSD of a binary number indicates whether the number
+is odd or even.
+        Because the binary values above the one's place are multiples
+        of two, and can be essentially boiled down to 2N + c. If c is
+	1, the number is odd; if c is 0, the number is even.
+
+3.6 Convert the binary number 00010101 to a hexadecimal number.
+	0001 -> 0x1
+	0101 -> 0x5
+	0x15
+
+3.7 Convert the binary number 00011001 to a hexadecimal number.
+	0001 -> 0x1
+	1001 -> 0x9
+	0x19
+
+3.8 Convert the hexadecimal number 0x15 to a decimal number.
+	1 -> 1 * 16
+	5 -> 5 *  1 + 16 = 21
+
+3.9 Convert the hexadecimal number 0x19 to a decimal number.
+	1 -> 1 * 16
+	9 -> 9 *  1 + 16 = 25
+
+3.10 Convert the decimal number -35 to an 8-bit two's complement binary
+number.
+	Binary value of 35: 00100011
+	        Complement: 11011101
+
+3.11 Convert the decimal number -32 to an 8-bit two's complement binary
+number.
+	Binary value of 32: 00100000
+	        Complement: 11100000
+
+3.12 Assuming the use of the two's complement number system find the
+equivalent decimal values for the following 8-bit binary numbers.
+	(a) 10000001 -> -(01111111) = 0x7F = -127
+	(b) 11111111 -> -(00000001) = 0x01 = -1
+	(c) 01010000 -> 5 * 16 + 0  = 80
+	(d) 11100000 -> -(00100000) = 0x20 = -32
+	(e) 10000011 -> -(01111101) = 0x7D = -125
+
+3.13 Convert the base 8 number 204 to a decimal number.
+	2 * 8^2 + 0 * 8^1 + 4 * 8^0 = 128 + 4 = 132
+
+3.14 Convert the base 7 number 204 to a decimal number.
+	2 * 7^2 + 0 * 7^1 + 4 * 7^0 = 98 + 4 = 102
+
+3.15 Convert the base 6 number 204 to a decimal number.
+	2 * 6^2 + 0 * 6^1 + 4 * 6^0 = 72 + 4 = 76
+
+3.16 Convert the base 5 number 204 to a decimal number.
+	2 * 5^2 + 0 * 5^1 + 4 * 5^0 = 50 + 4 = 54
+
+3.17 Convert the base 10 number 81 to a base 9 number.
+	100 (1 * 9^2 + 0 * 9^1 + 0 * 9^0)
+
+3.18 For each row of the following table, convert the given number to
+each of the other two bases, assuming the two's complement system is
+used:
+
+	16-bit Binary		Hexadecimal			Decimal
+	1111111100111100	  0xFF3C			 -196
+	1111111110001000	  0xFF88			 -120
+	1111111110000000	  0xFF80			 -128
+	1111111111111010	  0xFFFA			 -6
+	0000000000010001	  0x0011			  17
+	1111111111100111	  0xFFE7			 -25
+
+3.19 You are given the following two numbers in two's complement
+representation:
+	01101110
+	00011010
+Perform the binary addition, Did signed overflow occur? Explain how you
+determined whether or not overflow occurred.
+        The result is 10001000. Signed overflow did occur: the
+        result has a different sign than both operands.
+
+3.20 In this chapter, the one's complement number system was never
+mentioned, but at http://courses.cs.vt.edu/csonline/NumberSystems/Lessons/
+you can learn about it. Explain the major trade-offs between using the
+one's or two's complement system.
+	One's complement is simpler (inversion of bits), however there
+	are multiple representations of zero (0 and -0).
+
+3.21 You are given the following two numbers in two's complement
+representation. Perform the binary subtraction. Did signed overflow
+occur? Explain how you determined whether or not overflow occurred.
+	11101000	->	11101000
+	00010011	->	11101101
+				00011101
+	In the two's complement addition, the result has a different
+	sign than the two operands; overflow did occur.
+
+3.22 Sign extend the two-digit hex number 0x88 to a four digital hex
+number.
+	0xFF88
+
+3.33 The following subtract instruction is located at address
+0x00012344. What are the two possible values for the contents of the PC
+register after the branch instruction has executed?
+
+	loop:	addi	$t4,	$t4,	-8
+		sub	$t2,	$t2,	$t0
+		bne	$t4,	$t2,	loop
+
+	0x00012344 (if not equal)
+	0x00012350 (if equal)
+	
+3.34 You are given two 8-bit binary numbers (X=10010100 and
+Y=00101100) in the two's complement number system. What do the values
+represent in decimal? Perform the following arithmetic operations: X+Y,
+X-Y, Y-X.
+	X complement: 01101100
+	Y complement: 11010100
+	X=-108
+	Y=44
+	X+Y:
+		10010100
+		00101100
+		11000000 = -64
+		No overflow; the operands have different signs.
+		hex: 0x94 + 0x2c = 0xc0
+	X-Y:
+		10010100
+		11010100
+                01101000 = overflow (operands have different signs)
+		hex: 0x94 + 0xd4 = 0x168
+	Y-X:
+		00101100
+		01101100
+		10011000 = overflow (operands have different signs)
+		hex: 0x2c - 0x6c = -0x4c
+
+3.35 The following code segment is stored in memory starting at memory
+location 0x00012344. What are the two possible values for the contents
+of the PC after the branch instruction has executed. Write a comment for
+each line.
+
+	loop:	lw	$t0,	0($a0)
+		addi	$a0,	$a0,	4
+		andi	$t1,	$t0,	1
+		beqz	$t0,	loop
+
+	0x00012344, 0x000123
+	1. Add the first word in the array pointed to by $a0.
+	2. Skip to the next word in $a0.
+	3. Check if the previously loaded word is even.
+	4. If the word is even, keep looping.
+	This code breaks after finding the first odd number in memory.
