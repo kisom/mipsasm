@@ -18,10 +18,10 @@ a5	9
 a6	10
 a7	11
 -----------------------------------------------------------------------
-t4	12		Temporary value.		No
-t5	13
-t6	14
-t7	15
+t0	12		Temporary value.		No
+t1	13
+t2	14
+t3	15
 -----------------------------------------------------------------------
 s0	16		Saved temporaries values.	Yes
 s1	17
@@ -47,7 +47,7 @@ s8	30		Frame pointer.			Yes
 ra	31		Return address.
 -----------------------------------------------------------------------
 
-SYSTEM CALLS (OPENBSD)
+SYSTEM CALLS (OPENBSD) [1]
 ========================================================================
 Name			Number		Args			Return
 ========================================================================
@@ -79,3 +79,6 @@ link			9		$a0: address of source	success
 						filename
 unlink			10		$a0: address of target	success
 						filename
+
+[1] $a3 will contain the success code: 0 on success, 1 on failure. If it
+    has failed, $v0 will contain errno.
