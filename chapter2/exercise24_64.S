@@ -1,5 +1,6 @@
 # Exercise 2.4, 64-bit edition
 # Needs to be updated with the proper syscalls.
+# TODO: write atoi, itoa functions.
 	.data
 	.align 4
 prompt0:.asciiz "s0: "
@@ -19,8 +20,9 @@ prompt:
 	syscall
 	j $ra
 
+# prompt user for values of s[0-2], calculate t0, display
+# the result to stdout and exit.
 main:
-	# prompt the user for the values of s0, s1, and s2.
 	dla	$a0,	prompt0
 	jal	prompt
 	move	$s0,	$v0
