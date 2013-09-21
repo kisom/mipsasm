@@ -4,3 +4,10 @@ In this folder are several test files wherein I attempt to figure
 out how to use the syscalls, at least for OpenBSD.mips64.
 
 owrite.S:	open ``tmp.out'' and write the string ``hello\n'',
+oread.S:	open ``tmp.out'', read up to 10 characters, and write
+		the characters to standard out.
+linktmp.S:	hard link ``tmp.out'' to ``tmp_link.out''.
+unlinktmp.S:	unlink ``tmp.out'' and ``tmp_link.out''.
+daemon.S:	double-forks, sleeps 5 seconds, and exits. Prints
+		status to console when parent exits, the child
+		exits, and the daemon exits. Total run time is ~10s.
