@@ -1,0 +1,103 @@
+EXERCISES
+
+SPIM exercises in the spim/ directory; OpenBSD/sgi exercises in
+the openbsd directory. Each exercises contains a summary of the problem
+in the header, as well as a performance evaluation.
+
+5.1 Write a MIPS assembly language program to find the sum of the first
+100 words of data in the memory location with the label "chico". Store
+the resulting sum in the next memory location beyond the end of the
+array chico.
+
+5.2 Write a MIPS assembly language program to transfer a block of 100
+words starting at memory location SRC to another area of memory DEST.
+
+5.3 Write a MIPS function called ABS that accepts an integer word in
+register $a0 and returns its absolute value in $a0, Also, show an
+example code segment that calls the ABS function twice, to test the
+function for two different input values.
+
+5.4 Write a function PENO (&X, N, SP, SN) that will find the sum of the
+positive even values and negative odd values in an array X of length N.
+X is the address of an array passed through $a0. N is the length of the
+array passed through $a1. The function should return two values:
+	(1) The sum of all the positive even elements in the array
+	passed back through $v0.
+	(2) The sum of all the negative odd elements in the array passed
+	back through $v1.
+
+5.5 Write a function SUM(N) to find the sum of the integers from 1 to N,
+making use of the multiplication and shifting operations. The value N
+will be passed to the function in $a0 and the result will be returned in
+the $v0 register. Then write a MIPS assembly language main program that
+will call the SUM function five times each time passing a different
+value to the function for N, and then printing the results. The values
+for N are defined as follows:
+	N:	.word	9, 10, 32666, 32777, 654321
+
+5.6 Write a function FIB(N, &array) to store the first N elements of the
+Fibonacci sequence in an array in memory. The value N is passed in $a0,
+and the address of the array is passed in register $a1. The first few
+numbers of the Fibonacci sequence are 1, 1, 2, 3, 5, 8, 13...
+
+5.7 Write a function that will receive three integer values in registers
+$a0, $a1, and $a3, and will return them sorted with the minimum value in
+$a0 and the maximum value in $a2.
+
+5.8 Write the complete assembly language program, in cluding data
+declarations, that corresponds to the following C code fragment.
+
+	int main()
+	{
+		int K, Y;
+		int Z[50];
+		Y = 56;
+		K = 20;
+		Z[K] = Y - 16 * (K/4 + 210);
+	}
+	Make use of the fact that multiplication and division by powers
+	of two can be performed most efficiently by shifting.
+
+5.9 MaxMin(&X, N, Sum)
+Write a function to search through an array X of N words to find the
+minimum and maximum values. The address of the array will be passed to
+the function using register $a0, and the number of words in the array
+will be passed to the function using register $a1. The minimum and
+maximum values are returned in registers $v0 and $v1, respectively.
+
+5.10 SumMain(&X, N, Sum)
+Write a function to find the sum of the main diagonal elements in a
+two-dimensional N-by-N array of 32-bit words. The address of the array
+and the size N are passed to the function in registers $a0 and $a1,
+respectively. The result is returned in $v0. The values in $a0 and $a1
+should not be modified by your program. Calculate the number of clock
+cycles required to execute the algorithm, assuming that N = 4.
+
+5.11 Det(&X, D)
+Write a function to find the determinant of a two-by-two matrix (array).
+The address of the array is passed to the function in registers $a0 and
+the result is returned in $v0. The value in the register $a0 should not
+be modified by this program. Calculate the number of clock cycles
+required to execute your algorithm.
+
+5.12 Write a function that accepts a binary value in register $a0 and
+returns a value in $v0 corresponding to the number of ones in $a0.
+
+5.13 Translate the following pseudocode expression to MIPS assembly
+language code:
+		.data
+	zap:	.space	200
+		.text
+		zap[$a0] = $s0;
+Include code to ensure there is no array bounds violation when the sw
+instruction is executed. Note that the array "zap" is an array
+containing 50 words, thus the value in register $a0 must be in the range
+from 0 to 196. Include code to ensure that the value in register $a0 is
+a word address. If the array bounds violation is detected or the value
+in register $a0 is not a word address then branch to the label "Error".
+
+5.14 Write a function to search through an array X of N words to find
+how many of the values are evenly divisible by four. The address of the
+array will be passed to the function using register $a0, and the number
+of words in the array will be passed in register $a1. Return the results
+in register $v0.
