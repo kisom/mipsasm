@@ -17,6 +17,7 @@
 	.text
 	.globl	memcp
 memcp:
+	.set noreorder
 	xor	$t0,	$t0,	$t0
 	move	$t1,	$a0
 	move	$t2,	$a1
@@ -28,4 +29,4 @@ _memcp:
 	bne	$t0,	$a2,	_memcp
 	addiu	$t1,	$t1,	4
 	jr	$ra
-
+	.set reorder
