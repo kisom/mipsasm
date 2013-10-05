@@ -14,23 +14,27 @@ syscheck:
 	@./syscheck.sh
 	@echo "ok"
 
-owrite: owrite.S
+.SUFFIXES: .S .o
+.S.o:
+	${CC} ${ASMFLAGS} -c $<
+
+owrite: owrite.o
 	$(CC) $(ASMFLAGS) -o $@ $?
 
-oread: oread.S
+oread: oread.o
 	$(CC) $(ASMFLAGS) -o $@ $?
 
-linktmp: linktmp.S
+linktmp: linktmp.o
 	$(CC) $(ASMFLAGS) -o $@ $?
 
-unlinktmp: unlinktmp.S
+unlinktmp: unlinktmp.o
 	$(CC) $(ASMFLAGS) -o $@ $?
 
-daemon: daemon.S
+daemon: daemon.o
 	$(CC) $(ASMFLAGS) -o $@ $?
 
-util_test: util.S util_test.S
-	$(CC) $(ASMFLAGS) -o $@ util.S util_test.S
+util_test: ../lib/util.S util_test.S
+	$(CC) $(ASMFLAGS) -o $@ ../lib/util.S util_test.S
 
 test: syscheck $(TARGETS)
 	./test.sh
