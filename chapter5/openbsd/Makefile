@@ -1,4 +1,4 @@
-TARGETS = exercise502 exercise503 exercise504 exercise505
+TARGETS = exercise502 exercise503 exercise504 exercise505 exercise507
 ASMFLAGS = -g -O0
 
 all: $(TARGETS)
@@ -13,6 +13,12 @@ exercise504:	exercise504.S
 	gcc -o $@ $(ASMFLAGS) $@.S
 
 exercise505:	exercise505.S
+	gcc -o $@ $(ASMFLAGS) $@.S
+
+exercise506:	exercise506.S
+	gcc -o $@ $(ASMFLAGS) $@.S
+
+exercise507:	exercise507.S
 	gcc -o $@ $(ASMFLAGS) $@.S
 
 run: $(TARGETS)
