@@ -28,7 +28,7 @@ sum:
 	sll	$t0,	$t0,	31
 	srl	$v1,	$v1,	1
 	add	$v0,	$v0,	$t0
-	j	$ra
+	jr	$ra
 
 displaysum:
 	addiu	$sp,	$sp,	-16
