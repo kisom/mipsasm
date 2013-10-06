@@ -1,3 +1,14 @@
+/*
+ * Slightly modified from original exercise reqirements;
+ * the exercise dictates the use only of $v0, i.e. for
+ * 32-bit results. The final input, 654321, requires
+ * 64-bit results in order to avoid overflow. Accordingly,
+ * $v1 is used to store the high 32-bits, and $v0 is used
+ * to store the low 32-bits. Alternatively, one could check
+ * for overflow and print an appropriate error message, but
+ * implementing 64-bit results was more interesting.
+ */
+
 	.data
 out:	.asciiz	"Sum(N) = %lu\n"
 
