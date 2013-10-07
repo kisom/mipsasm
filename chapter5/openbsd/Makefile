@@ -1,5 +1,5 @@
 TARGETS = exercise502 exercise503 exercise504 exercise505 exercise506 \
-	  exercise507 exercise508 exercise509
+	  exercise507 exercise508 exercise509 exercise510
 ASMFLAGS = -g -O0
 
 all: $(TARGETS)
@@ -28,10 +28,13 @@ exercise508:	exercise508.S
 exercise509:	exercise509.S
 	gcc -o $@ $(ASMFLAGS) $@.S
 
+exercise510:	exercise510.S
+	gcc -o $@ $(ASMFLAGS) $@.S
+
 run: $(TARGETS)
 	@for target in $(TARGETS);		\
 	do					\
-		echo "Running $$target";	\
+		echo "[+] Running $$target";	\
 		./$$target;			\
 	done
 
