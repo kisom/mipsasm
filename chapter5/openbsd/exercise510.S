@@ -4,7 +4,7 @@
  */
 
 	.data
-result:	.asciiz	"Determinant: %d\n"
+result:	.asciiz	"Sum of main diagonal: %d\n"
 matrix3:.word	1, 2, 3
 	.word	4, 5, 6
 	.word	7, 8, 9
