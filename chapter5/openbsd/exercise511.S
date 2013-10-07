@@ -33,3 +33,14 @@ main:	dla	$a0,	matrix2
 	ori	$a0,	$0,	0
 	ori	$v0,	$0,	1
 	syscall
+
+/*
+ * Performance evaluation:
+ *	worst case:
+ *	3 + 35 + 4 + 35 + 3 = 80 cycles
+ *	best case:
+ *	3 + 20 + 4 + 20 + 3 = 50 cycles
+ * According to the manual[1], the processor will take between 20-35
+ * cycles to complete a multiplication.
+ * [1] http://techpubs.sgi.com/library/dynaweb_docs/0640/SGI_Developer/books/OrOn2_PfTune/
+ */

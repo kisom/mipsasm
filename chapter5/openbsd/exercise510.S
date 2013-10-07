@@ -40,3 +40,14 @@ main:	dla	$a1,	matrix4
 	ori	$a0,	$0,	0
 	ori	$v0,	$0,	1
 	syscall
+
+/*
+ * performance evaluation:
+ * 	worst case:
+ *	3 + (35 + 8) * 4 + 1 = 288 cycles
+ *	best case:
+ *	3 + (20 + 8) * 4 + 1 = 116 cycles
+ * See exercise 5.11 for the reference for multiplication clock cycles
+ * on the R10000 CPU. Of course, the performance will likely vary on the
+ * O2.
+ */
