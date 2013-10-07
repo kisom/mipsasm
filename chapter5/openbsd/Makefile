@@ -1,4 +1,4 @@
-TARGETS = exercise502 exercise503 exercise504 exercise505 	\
+TARGETS = exercise502 exercise503 exercise504 exercise505 exercise506 \
 	  exercise507 exercise508 exercise509
 ASMFLAGS = -g -O0
 
