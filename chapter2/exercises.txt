@@ -84,7 +84,10 @@ expressions into MIPS assembly language.
     (s) s5 = 7 * a5;
         li $t0, 7
         mul $s5, $t0, $a5
-2.2 Analyze the assembly language code that you developed for each of the above pseudocode instructions and calculate the number of clock cycles requried to fetch and execute the code corresponding to each expression.
+
+2.2 Analyze the assembly language code that you developed for each of the
+above pseudocode instructions and calculate the number of clock cycles
+required to fetch and execute the code corresponding to each expression.
     (a) 2 clock cycles
     (b) 42 clock cycles
     (c) 1 clock cycle
@@ -103,14 +106,17 @@ expressions into MIPS assembly language.
     (q) 40 clock cycles
     (r) 34 clock cycles
     (s) 38 clock cycles
-2.3 Show how the following expression can be evaluated in MIPS assembly language, without modifying the contents of the "s" registers.
+
+2.3 Show how the following expression can be evaluated in MIPS assembly
+language, without modifying the contents of the "s" registers.
     $t0 = ($s1-$s0/$s2)*$s4
 
     div $t0, $s0, $s2
     sub $t0, $s1, $t0
     mul $t0, $t0, $s4
 
-2.4 Show how the following pseudocode expression can be efficiently evaluated in MIPS assembly language.
+2.4 Show how the following pseudocode expression can be efficiently
+evaluated in MIPS assembly language.
     $t0=$s0/8-2*$s1+$s2
 
     # 45 clock cycles

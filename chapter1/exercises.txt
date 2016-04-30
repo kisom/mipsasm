@@ -19,7 +19,7 @@ EXERCISES
 
 1.5 Explain the difference between a bus and a control line.
     A bus transports data between various components of the CPU,
-    while a control line selects an input bus in a multiplexor.
+    while a control line selects an input bus in a multiplexer.
 
 1.6 Identify a kitchen appliance that contains a control unit that
 issues control signals.

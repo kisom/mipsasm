@@ -44,7 +44,7 @@ numbers of the Fibonacci sequence are 1, 1, 2, 3, 5, 8, 13...
 $a0, $a1, and $a3, and will return them sorted with the minimum value in
 $a0 and the maximum value in $a2.
 
-5.8 Write the complete assembly language program, in cluding data
+5.8 Write the complete assembly language program, including data
 declarations, that corresponds to the following C code fragment.
 
 	int main()

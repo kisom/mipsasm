@@ -23,7 +23,7 @@ in hexadecimal.
 	8. 0xA0940004
 	9. 0x001BD102
 
-4.2 What is the character stringcorresponding to the following ASCII
+4.2 What is the character string corresponding to the following ASCII
 codes?
 	0x2a2a2a2a	"****"
 	0x69644120	"idA "
